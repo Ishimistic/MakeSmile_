@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .app {
+    text-align: center;
+  }
+  
+  .header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header h1 {
+    margin: 0;
+    color: #FF6F61;
+  }
+  
+  .header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .welcome-section {
+    display: flex;
+    background-color: #F8BBD0;
+    padding: 50px;
+  }
+  
+  .welcome-text {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .welcome-text h2 {
+    color: #fff;
+    margin: 0;
+  }
+  
+  .welcome-text p {
+    color: #fff;
+    font-size: 1.2em;
+  }
+  
+  .welcome-image {
+    flex: 1;
+  }
+  
+  .welcome-image img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .about-section {
+    background-color: #FCE4EC;
+    padding: 50px;
+    text-align: left;
+  }
+  
+  .about-text h2 {
+    color: #FF4081;
+  }
+  
+  .about-text p {
+    color: #333;
+    margin: 20px 0;
+  }
+  
+  .footer {
+    background-color: #E1BEE7;
+    padding: 30px;
+    color: #fff;
+    text-align: left;
+  }
+  
