@@ -1,27 +1,30 @@
-import image from "../assets/plantation.jpeg";
+import study from "../assets/study.jpg";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-function AboutUs() {
+function Initiative() {
   return (
-    <div className="home-container">
+    <>
       <Header />
-      <div className="heading">Welcome to MakeSmile</div>
-        <div className="about-work">
-          <div className="welcome-about-us">
-            <span>MakeSmile</span> is an initiative by the Drishti Rotaract Club
+      <div className="initiative-container">
+        <h1 className="initiative-heading">Welcome to MakeSmile</h1>
+        <div className="initiative-content">
+          <div className="initiative-text">
+            <p><span className="highlight">MakeSmile</span> is an initiative by the Drishti Rotaract Club
             of BPIT that connects people with extra toys and books to those in
             need. Our mission is to distribute these resources to children who
             could benefit from them, spreading joy and support within the
-            community.
+            community.</p>
           </div>
-          <br />
-          <div className="teamImg">
-            <img src={image} alt="" width="760" height="300" />
+          
+          <div className="initiative-image-container">
+            <img src={study} alt="Children studying" className="initiative-image" />
           </div>
         </div>
       </div>
-    // </div>
+      <Footer />
+    </>
   );
 }
 
-export default AboutUs;
+export default Initiative;

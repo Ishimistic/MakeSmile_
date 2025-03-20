@@ -2,13 +2,12 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper } from "@mui/material";
 import styled from "styled-components";
-import s1 from "../assets/images-back/s1.png"
-// import s2 from "../assets/images-back/s2.jpg";
-import s3 from "../assets/images-back/s3.jpg";
+import PropTypes from "prop-types";
+
 
 const ImageWrapper = styled.div`
   width: 100%;
-  height: 90vh; 
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,12 +16,11 @@ const ImageWrapper = styled.div`
 
 const StyledImage = styled.img`
   width: 100%;
-  height: auto; 
+  height: 100%;
+  object-fit: cover;
 `;
 
-const ImageCarousel = () => {
-  const images = [s1, s3];
-
+const ImageCarousel = ({ images }) => {
   return (
     <Carousel>
       {images.map((image, index) => (
@@ -35,5 +33,10 @@ const ImageCarousel = () => {
     </Carousel>
   );
 };
+
+ImageCarousel.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
 
 export default ImageCarousel;
