@@ -9,7 +9,7 @@ const donationSchema = new mongoose.Schema({
     },
     mobileNumber: {
         type: String,
-        required: true
+        // required: true
     },
     email: {
         type: String,
@@ -25,6 +25,14 @@ const donationSchema = new mongoose.Schema({
     },
     message: {
         type: String
+    },
+    locationOfPickUp: {
+        type: String,
+        required: true
+    },
+    timeOfPickUp: {
+        type: String,
+        required: true
     }
 });
 

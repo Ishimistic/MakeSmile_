@@ -544,16 +544,17 @@ body {
 }
 
 /* DonationForm.css */
-Responsive Donation Form CSS
+
+/* DonationForm.css - Enhanced Responsive Version */
 
 .form-container {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   min-height: 100vh;
   background-color: #f5f7fa;
-  padding: 2rem 1rem; /* Increased padding around the form container */
+  padding: 2rem 1rem;
   margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .donation-form {
@@ -565,14 +566,15 @@ Responsive Donation Form CSS
   max-width: 800px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem; /* Increased gap between form elements */
-  margin: 3rem auto; /* Added margin for better spacing */
+  gap: 1rem;
+  margin: 3rem auto;
+  box-sizing: border-box;
 }
 
 /* Form title (if needed) */
 .form-title {
   grid-column: span 2;
-  margin-bottom: 2rem; /* Increased spacing */
+  margin-bottom: 2rem;
   color: #2c3e50;
   font-size: 1.75rem;
   font-weight: 600;
@@ -581,8 +583,10 @@ Responsive Donation Form CSS
 
 /* Form groups */
 .form-group {
-  margin-bottom: 0.5rem; /* Small spacing between groups */
+  margin-bottom: 0.5rem;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Make message textarea span both columns */
@@ -594,7 +598,7 @@ Responsive Donation Form CSS
 .form-group label {
   display: block;
   font-weight: 500;
-  margin-bottom: 0.75rem; /* Increased space between label and input */
+  margin-bottom: 0.75rem;
   font-size: 0.95rem;
   color: #4a5568;
   text-align: left;
@@ -605,7 +609,7 @@ Responsive Donation Form CSS
 .form-group textarea,
 .react-tel-input .form-control {
   width: 100%;
-  padding: 0.875rem 1.25rem; /* Increased padding inside inputs */
+  padding: 0.875rem 1.25rem;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   box-sizing: border-box;
@@ -626,7 +630,7 @@ Responsive Donation Form CSS
 /* Textarea specific styles */
 .form-group textarea {
   resize: vertical;
-  min-height: 140px; /* Increased height */
+  min-height: 140px;
 }
 
 /* Phone input specific overrides */
@@ -646,14 +650,15 @@ Responsive Donation Form CSS
   grid-column: span 2;
   background-color: #fba0a0;
   color: white;
-  padding: 1rem 1.5rem; /* Increased padding */
+  padding: 1rem 1.5rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.2s ease;
-  margin-top: 2rem; /* Increased top margin */
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .donation-form button[type="submit"]:hover {
@@ -677,17 +682,32 @@ Responsive Donation Form CSS
   content: "";  /* Remove required indicator for message field */
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Fix for date and time inputs which often have browser-specific styling */
+input[type="date"],
+input[type="time"] {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 2.5rem;
+}
+
+/* Better small screen support for date/time inputs */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* Improved Responsive adjustments */
+@media (max-width: 900px) {
   .form-container {
-    padding: 2rem 1rem; /* Reduced padding on mobile but still spacious */
+    padding: 1.5rem 1rem;
   }
 
   .donation-form {
     grid-template-columns: 1fr;
-    padding: 2rem; /* Reduced padding but still spacious */
-    gap: 1.5rem;
-    margin: 2rem auto;
+    padding: 1.5rem;
+    gap: 1rem;
+    margin: 1.5rem auto;
   }
   
   .form-group:nth-child(5) {
@@ -699,7 +719,35 @@ Responsive Donation Form CSS
   }
 }
 
-/* Additional animations */
+/* Extra small devices */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .donation-form {
+    padding: 1.25rem;
+    border-radius: 8px;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .donation-form button[type="submit"] {
+    padding: 0.875rem 1.25rem;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Animation remains the same */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -709,11 +757,39 @@ Responsive Donation Form CSS
   animation: fadeIn 0.4s ease-out;
 }
 
-/* Optional: add custom focus styles for the date input which often has browser-specific styling */
-input[type="date"] {
-  appearance: none;
+/* Fix for mobile viewport height issues */
+@media (max-height: 700px) {
+  .form-container {
+    min-height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .donation-form {
+    margin: 1rem auto;
+  }
 }
 
+/* Fix for smaller screens in landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .form-container {
+    min-height: auto;
+  }
+  
+  .donation-form {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 0.3rem;
+  }
+  
+  .donation-form button[type="submit"] {
+    margin-top: 1rem;
+  }
+}
 /*Footer*/
 /*  */
 

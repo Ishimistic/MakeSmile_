@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Swal from 'sweetalert2';
 import Footer from "../components/Footer";
@@ -12,11 +11,13 @@ console.log("API URL:", url);
 const DonationForm = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    mobileNumber: "",
+    // mobileNumber: "",
     email: "",
     donationItem: "",
     handoverDate: "",
     message: "",
+    locationOfPickUp: "",
+    timeOfPickUp: ""
   });
 
   const [isOtpVerified, setIsOtpVerified] = useState(false);
@@ -141,13 +142,22 @@ const DonationForm = () => {
     e.preventDefault();
     
     // Form validation
-    if (!formData.fullName || !formData.email || !formData.donationItem || !formData.handoverDate || !formData.mobileNumber) {
+    // if (!formData.fullName || !formData.email || !formData.donationItem || !formData.handoverDate || !formData.mobileNumber) {
+    if (!formData.fullName || !formData.email || !formData.donationItem || !formData.handoverDate || !formData.locationOfPickUp || !formData.timeOfPickUp) {
       Swal.fire({
         title: "Missing Information",
         text: "Please fill all required fields",
         icon: "warning"
       });
       return;
+    }
+
+    if (formData.timeOfPickUp) {
+      const selectedTime = formData.timeOfPickUp;
+      if (selectedTime < "09:00" || selectedTime > "20:00") {
+        alert("Please select a pickup time between 9:00 AM and 8:00 PM");
+        return;
+      }
     }
     
     // If already verified, submit directly; otherwise send OTP first
@@ -174,22 +184,22 @@ const DonationForm = () => {
             />
           </div>
           <div className="form-group">
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
             <label>What you want to donate:</label>
             <input
               type="text"
               name="donationItem"
               required
               value={formData.donationItem}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              required
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
@@ -212,6 +222,27 @@ const DonationForm = () => {
             ></textarea>
           </div>
           <div className="form-group">
+            <label>Location (Of pickup):</label>
+            <input
+              type="text"
+              name="locationOfPickUp"
+              required
+              value={formData.locationOfPickUp}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Time (Of pickup):</label>
+            <input
+              type="time"
+              name="timeOfPickUp"
+              required
+              value={formData.timeOfPickUp}
+              onChange={handleChange}
+            />
+          </div>
+         
+          {/* <div className="form-group">
             <label>Mobile Number:</label>
             <PhoneInput
               onlyCountries={["in"]}
@@ -223,7 +254,7 @@ const DonationForm = () => {
                 });
               }}
             />
-          </div>
+          </div> */}
           <button type="submit" onClick={handleSubmit}>
             {isOtpVerified ? "Submit" : "Verify & Submit"}
           </button>

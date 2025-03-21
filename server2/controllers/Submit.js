@@ -114,7 +114,7 @@ export const Submit = async (req, res) => {
     }
     res.sendStatus(200);
   } catch (error) {
-    // console.error("Error submitting donation:", error);
+    console.error("Error submitting donation:", error.message);
     res.sendStatus(500);
   }
 };
