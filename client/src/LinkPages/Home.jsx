@@ -1,8 +1,8 @@
 import Header from "../components/Header";
-import Impact from "../components/impactData";
+import Impact from "../components/ImpactData";
 import process from "../assets/process.png";
-import Form from "./Form.jsx";
-import ImageCarousel from "../components/ImageCarousel";
+// import Form from "./Form.jsx";
+// import ImageCarousel from "../components/ImageCarousel";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 

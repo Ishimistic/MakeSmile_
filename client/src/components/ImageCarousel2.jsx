@@ -1,25 +1,41 @@
-import ImageCarousel2 from "./ImageCarousel2";
-import t1 from "../assets/t1.png";
-import t2 from "../assets/t2.png";
-import t3 from "../assets/t3.png";
-import t4 from "../assets/t4.png";
-import t5 from "../assets/t5.png";
-import s1 from "../assets/images-back/s1.png";
-import s4 from "../assets/images-back/s4.png";
-import s3 from "../assets/images-back/s3.jpg";
+import React from "react";
+import Carousel from "react-material-ui-carousel";
+import { Paper } from "@mui/material";
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
-function impactData() {
-  const imagesIntro = [t1, t2, t3, t4, t5, s3, s4];
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: auto;
+`;
+
+const ImageCarousel2 = ({ images }) => {
   return (
-    <div className="second">
-      <div className="introWorkImg">
-        <ImageCarousel2 images={imagesIntro} />
-      </div>
-      <div className="introWorkContent">
-        Serving the community is not just about helping those in need it is about creating a cycle of support that benefits everyone. By sharing what we have, whether it is time, resources, or compassion, we lift each other up and build a community where everyone has the opportunity to flourish. A strong community is rooted in care, and through our collective efforts, we make it stronger every day.
-      </div>
-    </div>
+    <Carousel>
+      {images.map((image, index) => (
+        <Paper key={index}>
+          <ImageWrapper>
+            <StyledImage src={image} alt={`Slide ${index}`} />
+          </ImageWrapper>
+        </Paper>
+      ))}
+    </Carousel>
   );
-}
+};
 
-export default impactData;
+ImageCarousel2.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+
+export default ImageCarousel2;

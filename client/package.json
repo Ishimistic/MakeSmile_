@@ -25,6 +25,7 @@
     "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "^3.0.1",
+    "styled-components": "^6.1.16",
     "sweetalert2": "^11.17.2"
   },
   "devDependencies": {
@@ -36,5 +37,9 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "vite": "^5.3.4"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC"
 }

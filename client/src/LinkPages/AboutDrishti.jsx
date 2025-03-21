@@ -1,4 +1,4 @@
-// import React from "react";
+
 import Header from "../components/Header";
 
 function AboutDrishti() {
@@ -42,7 +42,11 @@ function AboutDrishti() {
           Drishti continues to make a positive difference in the community,
           fostering education, health, and environmental awareness.
         </div>
+
+        <br/>
+        
       </div>
+      
     </div>
   );
 }
