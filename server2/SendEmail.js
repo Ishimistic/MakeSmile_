@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config(); 
 
-const SendEmail = async ({ fullName, mobileNumber, email, donationItem, handoverDate, donorMessage, to, subject, text, isOTP = false }) => {
+const SendEmail = async ({ fullName, mobileNumber, email, donationItem, handoverDate, donorMessage, LocationOfPickUp, timeOfPickUp, to, subject, text, isOTP = false }) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         secure: true,
@@ -30,13 +30,22 @@ const SendEmail = async ({ fullName, mobileNumber, email, donationItem, handover
             from: process.env.EMAIL_USER,
             to: email,
             subject: 'New Donation Submission',
+            // text: `A new donation has been submitted:
+            //     Name: ${fullName}
+            //     // Mobile Number: ${mobileNumber}
+            //     Email: ${email}
+            //     Donation Item: ${donationItem}
+            //     Handover Date: ${handoverDate}
+            //     Message: ${donorMessage || ""}`
             text: `A new donation has been submitted:
                 Name: ${fullName}
-                Mobile Number: ${mobileNumber}
                 Email: ${email}
                 Donation Item: ${donationItem}
                 Handover Date: ${handoverDate}
-                Message: ${donorMessage || ""}`
+                Message: ${donorMessage || ""}
+                Location: ${LocationOfPickUp}
+                Time: ${timeOfPickUp}
+                `
         };
     }
 

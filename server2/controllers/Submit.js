@@ -84,17 +84,19 @@ export const verifyOTP = async (req, res) => {
 };
 
 export const Submit = async (req, res) => {
-  const { fullName, mobileNumber, email, donationItem, handoverDate, message } =
+  const { fullName, mobileNumber, email, donationItem, handoverDate, message, timeOfPickUp, locationOfPickUp } =
     req.body;
 
   try {
     const donation = new Donation({
       fullName,
-      mobileNumber,
+      // mobileNumber,
       email,
       donationItem,
       handoverDate,
       message,
+      timeOfPickUp,
+      locationOfPickUp
     });
     await donation.save();
 
@@ -102,11 +104,13 @@ export const Submit = async (req, res) => {
     if (email && isValidEmail(email)) {
       await SendEmail({
         fullName,
-        mobileNumber,
+        // mobileNumber,
         email,
         donationItem,
         handoverDate,
         donorMessage: message, 
+        locationOfPickUp,
+        timeOfPickUp
       });
       // console.log("Email sent to donor");
     } else {
@@ -115,6 +119,11 @@ export const Submit = async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     console.error("Error submitting donation:", error.message);
+    console.log("Error details:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status
+    });
     res.sendStatus(500);
   }
 };
